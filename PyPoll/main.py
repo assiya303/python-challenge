@@ -33,16 +33,15 @@ with open(csvpath, newline='') as csvfile:
         county.append(row[1])
         candidate.append(row[2])
 
-# Specify the file to write to
-output_path = os.path.join("output.csv")   
+# Specify the file to write to 
 # start writing
-with open(output_path, 'w', newline='') as csvfile:
+with open('output.txt', 'w') as txtfile:
     
-    print("Election Results", file=csvfile)
-    print("----------------------------------------------", file=csvfile)
+    print("Election Results", file=txtfile)
+    print("----------------------------------------------", file=txtfile)
     #calculate the total number of votes:
-    print("Total Votes:", len(voterid), file=csvfile)
-    print("----------------------------------------------", file=csvfile)
+    print("Total Votes:", len(voterid), file=txtfile)
+    print("----------------------------------------------", file=txtfile)
     #find the unique candidate name for reference, print to check for spelling errors; hash out for final product
     #unique_candidates=list(set(candidate))
     #print(unique_candidates)
@@ -64,12 +63,12 @@ with open(output_path, 'w', newline='') as csvfile:
     winner=None
     #look through key (k) and value(v) in dictionary, print stats, then find the winning candidate
     for k,v in di.items():
-        print(k,":",round(float(v*100/len(voterid)),3),"%","(",v,")", file=csvfile)
+        print(k,":",round(float(v*100/len(voterid)),3),"%","(",v,")", file=txtfile)
         if v>largest:
             largest=v
             winner=k
-    print("----------------------------------------------", file=csvfile)
-    print("Winner:", winner, file=csvfile)
-    print("----------------------------------------------", file=csvfile)
+    print("----------------------------------------------", file=txtfile)
+    print("Winner:", winner, file=txtfile)
+    print("----------------------------------------------", file=txtfile)
 
-print(open('output.csv').read())
+print(open('output.txt').read())

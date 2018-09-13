@@ -26,16 +26,15 @@ with open(csvpath, newline='') as csvfile:
         cashflow.append(float(row[1]))
         
 # Specify the file to write to
-output_path = os.path.join("output.csv")   
 # start writing
-with open(output_path, 'w', newline='') as csvfile:
+with open('output.txt', 'w') as txtfile:
 
-    print("Financial Analysis", file=csvfile)
-    print("----------------------------------------------", file=csvfile)
+    print("Financial Analysis", file=txtfile)
+    print("----------------------------------------------", file=txtfile)
     #print length of dates column = number of months
-    print("Total Months:", len(date), file=csvfile)
+    print("Total Months:", len(date), file=txtfile)
     #print cumulative cashflow
-    print("Total: $", sum(cashflow), file=csvfile)
+    print("Total: $", sum(cashflow), file=txtfile)
 
     #calculating the difference between subsequent rows in Cashflow column 
     for i in range(1,len(cashflow)):
@@ -51,8 +50,8 @@ with open(output_path, 'w', newline='') as csvfile:
         min_cf_change_date = str(date[cf_change.index(min(cf_change))])
 
 
-    print("Average Change: $", (avg_cf_change), file=csvfile)
-    print("Greatest Increase in Profits:", max_cf_change_date,"($", max_cf_change,")", file=csvfile)
-    print("Greatest Decrease in Profits:", min_cf_change_date,"($", min_cf_change,")", file=csvfile)
+    print("Average Change: $", (avg_cf_change), file=txtfile)
+    print("Greatest Increase in Profits:", max_cf_change_date,"($", max_cf_change,")", file=txtfile)
+    print("Greatest Decrease in Profits:", min_cf_change_date,"($", min_cf_change,")", file=txtfile)
 
-print(open('output.csv').read())
+print(open('output.txt').read())
